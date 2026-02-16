@@ -62,17 +62,18 @@ DEFAULT_FONT = "dejavu"
 TITLE_FONTS = {
     "same": {"name": "Same as grid", "file": None},
     "lobster": {"name": "Lobster", "file": "Lobster-Regular.ttf"},
-    "pacifico": {"name": "Pacifico", "file": "Pacifico-Regular.ttf"},
-    "marck-script": {"name": "Marck Script", "file": "MarckScript-Regular.ttf"},
-    "great-vibes": {"name": "Great Vibes", "file": "GreatVibes-Regular.ttf"},
     "comforter": {"name": "Comforter", "file": "Comforter-Regular.ttf"},
     "kurale": {"name": "Kurale", "file": "Kurale-Regular.ttf"},
     "caveat": {"name": "Caveat", "file": "Caveat-Regular.ttf"},
-    "bad-script": {"name": "Bad Script", "file": "BadScript-Regular.ttf"},
     "irpin-type": {"name": "Irpin Type", "file": "IrpinType-Regular.otf"},
+    "fixel-display": {"name": "Fixel Display", "file": "FixelDisplay-SemiBold.ttf"},
+    "e-ukraine": {"name": "e-Ukraine Head", "file": "e-UkraineHead-Regular.otf"},
+    "arsenal": {"name": "Arsenal", "file": "Arsenal-Bold.ttf"},
+    "unbounded": {"name": "Unbounded", "file": "Unbounded-Variable.ttf"},
+    "shantell-sans": {"name": "Shantell Sans", "file": "ShantellSans-Regular.ttf"},
 }
 
-DEFAULT_TITLE_FONT = "lobster"
+DEFAULT_TITLE_FONT = "irpin-type"
 
 # ---------------------------------------------------------------------------
 # Locale data

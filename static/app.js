@@ -213,27 +213,29 @@
 
     // Title (decorative) font CSS families and files
     const TITLE_FONT_CSS = {
-        "lobster":      "'Lobster', cursive",
-        "pacifico":     "'Pacifico', cursive",
-        "marck-script": "'Marck Script', cursive",
-        "great-vibes":  "'Great Vibes', cursive",
-        "comforter":    "'Comforter', cursive",
-        "kurale":       "'Kurale', serif",
-        "caveat":       "'Caveat', cursive",
-        "bad-script":   "'Bad Script', cursive",
-        "irpin-type":   "'Irpin Type', serif",
+        "lobster":        "'Lobster', cursive",
+        "comforter":      "'Comforter', cursive",
+        "kurale":         "'Kurale', serif",
+        "caveat":         "'Caveat', cursive",
+        "irpin-type":     "'Irpin Type', serif",
+        "fixel-display":  "'Fixel Display', sans-serif",
+        "e-ukraine":      "'e-Ukraine Head', sans-serif",
+        "arsenal":        "'Arsenal', sans-serif",
+        "unbounded":      "'Unbounded', sans-serif",
+        "shantell-sans":  "'Shantell Sans', cursive",
     };
 
     const TITLE_FONT_FILES = {
-        "lobster":      "Lobster-Regular.ttf",
-        "pacifico":     "Pacifico-Regular.ttf",
-        "marck-script": "MarckScript-Regular.ttf",
-        "great-vibes":  "GreatVibes-Regular.ttf",
-        "comforter":    "Comforter-Regular.ttf",
-        "kurale":       "Kurale-Regular.ttf",
-        "caveat":       "Caveat-Regular.ttf",
-        "bad-script":   "BadScript-Regular.ttf",
-        "irpin-type":   "IrpinType-Regular.otf",
+        "lobster":        "Lobster-Regular.ttf",
+        "comforter":      "Comforter-Regular.ttf",
+        "kurale":         "Kurale-Regular.ttf",
+        "caveat":         "Caveat-Regular.ttf",
+        "irpin-type":     "IrpinType-Regular.otf",
+        "fixel-display":  "FixelDisplay-SemiBold.ttf",
+        "e-ukraine":      "e-UkraineHead-Regular.otf",
+        "arsenal":        "Arsenal-Bold.ttf",
+        "unbounded":      "Unbounded-Variable.ttf",
+        "shantell-sans":  "ShantellSans-Regular.ttf",
     };
 
     function loadFonts() {
