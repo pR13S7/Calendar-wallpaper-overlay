@@ -69,6 +69,7 @@ TITLE_FONTS = {
     "kurale": {"name": "Kurale", "file": "Kurale-Regular.ttf"},
     "caveat": {"name": "Caveat", "file": "Caveat-Regular.ttf"},
     "bad-script": {"name": "Bad Script", "file": "BadScript-Regular.ttf"},
+    "irpin-type": {"name": "Irpin Type", "file": "IrpinType-Regular.otf"},
 }
 
 DEFAULT_TITLE_FONT = "lobster"

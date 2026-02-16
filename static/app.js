@@ -221,6 +221,7 @@
         "kurale":       "'Kurale', serif",
         "caveat":       "'Caveat', cursive",
         "bad-script":   "'Bad Script', cursive",
+        "irpin-type":   "'Irpin Type', serif",
     };
 
     const TITLE_FONT_FILES = {
@@ -232,6 +233,7 @@
         "kurale":       "Kurale-Regular.ttf",
         "caveat":       "Caveat-Regular.ttf",
         "bad-script":   "BadScript-Regular.ttf",
+        "irpin-type":   "IrpinType-Regular.otf",
     };
 
     function loadFonts() {
