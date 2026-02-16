@@ -337,6 +337,10 @@
         if (!file.type.startsWith("image/")) return;
         uploadedFile = file;
 
+        // Set month and year to current on each image upload
+        monthSelect.value = window.__currentMonth || new Date().getMonth() + 1;
+        yearInput.value = window.__currentYear || new Date().getFullYear();
+
         const reader = new FileReader();
         reader.onload = (e) => {
             previewImage.src = e.target.result;
