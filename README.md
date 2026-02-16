@@ -3,6 +3,10 @@
 A lightweight web service that overlays a monthly calendar onto an uploaded image.
 Supports **English** and **Ukrainian** languages. Designed to run on Raspberry Pi 4.
 
+## Screenshot
+
+![Calendar Wallpaper Overlay](screenshot.png)
+
 ## Features
 
 - Upload any image (JPEG, PNG, etc.)
