@@ -1,0 +1,10 @@
+venv/
+__pycache__/
+*.pyc
+*.pyo
+.git/
+.gitignore
+*.plan.md
+tmp_dl/
+README.md
+.DS_Store

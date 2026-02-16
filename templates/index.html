@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ua">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar Image Overlay</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="app-layout">
+
+    <!-- Left Panel: Upload + Controls -->
+    <aside class="left-panel">
+        <h1 data-i18n="title">Календар на шпалерах</h1>
+
+        <!-- Upload Area -->
+        <div id="upload-area" class="upload-area">
+            <input type="file" id="file-input" accept="image/*" hidden>
+            <div class="upload-prompt">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                    <polyline points="17 8 12 3 7 8"/>
+                    <line x1="12" y1="3" x2="12" y2="15"/>
+                </svg>
+                <p data-i18n="upload_prompt">Перетягніть зображення або <span class="link">оберіть</span></p>
+            </div>
+        </div>
+
+        <!-- Controls (shown after upload) -->
+        <div id="controls" class="controls hidden">
+
+            <div class="section-label" data-i18n="sec_frame">Рамка</div>
+            <div class="controls-row">
+                <div class="control-group">
+                    <label for="frame-select" data-i18n="lbl_phone_model">Модель телефону</label>
+                    <select id="frame-select">
+                        <option value="iphone" selected>iPhone 14 Pro</option>
+                        <option value="samsung">Samsung S25</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="section-label" data-i18n="sec_calendar">Календар</div>
+            <div class="controls-row">
+                <div class="control-group">
+                    <label for="month-select" data-i18n="lbl_month">Місяць</label>
+                    <select id="month-select"></select>
+                </div>
+                <div class="control-group">
+                    <label for="year-input" data-i18n="lbl_year">Рік</label>
+                    <input type="number" id="year-input" min="1900" max="2100" value="{{ current_year }}">
+                </div>
+            </div>
+            <div class="controls-row">
+                <div class="control-group">
+                    <label for="lang-select" data-i18n="lbl_language">Мова</label>
+                    <select id="lang-select">
+                        <option value="en">English</option>
+                        <option value="ua" selected>Українська</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label for="bold-select" data-i18n="lbl_font_weight">Товщина шрифту</label>
+                    <select id="bold-select">
+                        <option value="normal" data-i18n-opt="opt_regular">Звичайний</option>
+                        <option value="bold" selected data-i18n-opt="opt_bold">Жирний</option>
+                    </select>
+                </div>
+            </div>
+            <div class="controls-row">
+                <div class="control-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="show-year-checkbox" checked>
+                        <span data-i18n="lbl_show_year">Показувати рік</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="section-label" data-i18n="sec_month_title">Назва місяця</div>
+            <div class="controls-row">
+                <div class="control-group">
+                    <label for="title-font-select" data-i18n="lbl_font">Шрифт</label>
+                    <select id="title-font-select"></select>
+                </div>
+            </div>
+            <div class="controls-row">
+                <div class="control-group">
+                    <label for="title-size-slider" data-i18n-tpl="lbl_size">Розмір: <span id="title-size-value">30</span>px</label>
+                    <input type="range" id="title-size-slider" min="8" max="120" value="30">
+                </div>
+            </div>
+
+            <div class="section-label" data-i18n="sec_grid_text">Текст сітки</div>
+            <div class="controls-row">
+                <div class="control-group">
+                    <label for="font-select" data-i18n="lbl_font">Шрифт</label>
+                    <select id="font-select"></select>
+                </div>
+            </div>
+            <div class="controls-row">
+                <div class="control-group">
+                    <label for="font-size-slider" data-i18n-tpl="lbl_size">Розмір: <span id="font-size-value">13</span>px</label>
+                    <input type="range" id="font-size-slider" min="8" max="120" value="13">
+                </div>
+            </div>
+            <div class="controls-row">
+                <div class="control-group control-narrow">
+                    <label for="color-picker" data-i18n="lbl_color">Колір</label>
+                    <input type="color" id="color-picker" value="#FFFFFF">
+                </div>
+                <div class="control-group">
+                    <label for="opacity-slider" data-i18n-tpl="lbl_opacity">Прозорість: <span id="opacity-value">100</span>%</label>
+                    <input type="range" id="opacity-slider" min="0" max="100" value="100">
+                </div>
+            </div>
+            <div class="controls-row">
+                <div class="control-group">
+                    <label for="stroke-slider" data-i18n-tpl="lbl_thickness">Товщина: <span id="stroke-value">0</span>px</label>
+                    <input type="range" id="stroke-slider" min="0" max="5" value="0">
+                </div>
+            </div>
+
+            <div class="section-label" data-i18n="sec_background">Фон</div>
+            <div class="controls-row">
+                <div class="control-group control-narrow">
+                    <label for="bg-color-picker" data-i18n="lbl_color">Колір</label>
+                    <input type="color" id="bg-color-picker" value="#000000">
+                </div>
+                <div class="control-group">
+                    <label for="bg-opacity-slider" data-i18n-tpl="lbl_opacity">Прозорість: <span id="bg-opacity-value">50</span>%</label>
+                    <input type="range" id="bg-opacity-slider" min="0" max="100" value="50">
+                </div>
+            </div>
+            <div class="controls-row">
+                <div class="control-group">
+                    <label for="bg-padding-slider" data-i18n-tpl="lbl_padding">Відступ: <span id="bg-padding-value">12</span>px</label>
+                    <input type="range" id="bg-padding-slider" min="0" max="40" value="12">
+                </div>
+                <div class="control-group">
+                    <label for="bg-radius-slider" data-i18n-tpl="lbl_radius">Радіус: <span id="bg-radius-value">8</span>px</label>
+                    <input type="range" id="bg-radius-slider" min="0" max="30" value="8">
+                </div>
+            </div>
+
+            <div class="section-label" data-i18n="sec_border">Обведення</div>
+            <div class="controls-row">
+                <div class="control-group control-narrow">
+                    <label for="border-color-picker" data-i18n="lbl_color">Колір</label>
+                    <input type="color" id="border-color-picker" value="#FFFFFF">
+                </div>
+                <div class="control-group">
+                    <label for="border-width-slider" data-i18n-tpl="lbl_width">Ширина: <span id="border-width-value">0</span>px</label>
+                    <input type="range" id="border-width-slider" min="0" max="10" value="0">
+                </div>
+            </div>
+            <div class="controls-row">
+                <div class="control-group">
+                    <label for="border-opacity-slider" data-i18n-tpl="lbl_opacity">Прозорість: <span id="border-opacity-value">100</span>%</label>
+                    <input type="range" id="border-opacity-slider" min="0" max="100" value="100">
+                </div>
+            </div>
+
+            <div class="controls-row actions">
+                <button id="reset-btn" class="btn btn-secondary" data-i18n="btn_reset">Скинути позицію</button>
+                <button id="download-btn" class="btn btn-primary" data-i18n="btn_download">Завантажити</button>
+            </div>
+
+            <div id="change-image-area" class="change-image-area">
+                <button id="change-image-btn" class="btn btn-secondary btn-small" data-i18n="btn_change_image">Змінити зображення</button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Right Panel: Image Preview -->
+    <main class="right-panel">
+        <div id="preview-placeholder" class="preview-placeholder">
+            <p data-i18n="placeholder">Завантажте зображення для початку</p>
+        </div>
+        <div id="preview-area" class="preview-area hidden">
+            <div class="phone-frame frame-iphone" id="phone-frame">
+                <div class="phone-notch"></div>
+                <div class="phone-punch-hole"></div>
+                <div class="phone-screen">
+                    <div id="image-wrapper" class="image-wrapper">
+                        <img id="preview-image" src="" alt="Preview">
+                        <div id="calendar-overlay" class="calendar-overlay">
+                            <div id="calendar-title" class="calendar-title"></div>
+                            <pre id="calendar-grid"></pre>
+                            <div class="resize-handle"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="phone-home-bar"></div>
+                <div class="phone-btn phone-btn-power"></div>
+                <div class="phone-btn phone-btn-silent"></div>
+                <div class="phone-btn phone-btn-vol-up"></div>
+                <div class="phone-btn phone-btn-vol-down"></div>
+            </div>
+        </div>
+    </main>
+
+</div>
+
+<script>
+    window.__currentMonth = {{ current_month }};
+    window.__currentYear = {{ current_year }};
+</script>
+<script src="/static/app.js"></script>
+
+</body>
+</html>
