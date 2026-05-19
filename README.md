@@ -73,6 +73,20 @@ docker run -p 5555:5555 calendar-service
 
 Open **http://localhost:5555**.
 
+### Docker Compose
+
+```bash
+docker compose up -d
+```
+
+This builds the image and starts the service in the background. Open **http://localhost:5555**.
+
+To stop it:
+
+```bash
+docker compose down
+```
+
 ### Deploy to DigitalOcean App Platform
 
 1. Push the repo to GitHub/GitLab.
@@ -90,6 +104,25 @@ git clone <your-repo> && cd calendar_service
 docker build -t calendar-service .
 docker run -d --restart unless-stopped -p 80:5555 --name calendar calendar-service
 ```
+
+## Auto-deploy on `git pull` (server setup)
+
+A `post-merge` git hook is included that automatically rebuilds and restarts the
+Docker Compose service every time you run `git pull` on your server.
+
+Run this **once** on the server after cloning (or re-run after any fresh clone):
+
+```bash
+bash install-hooks.sh
+```
+
+After that, a plain `git pull` will:
+
+1. Fetch and merge the latest changes.
+2. Rebuild the Docker image with `--no-cache`.
+3. Recreate the running container with the new image.
+
+No manual `docker compose` commands needed on the server.
 
 ## File Structure
 

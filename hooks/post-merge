@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Runs automatically after every successful `git pull` (git merge).
+# Rebuilds and restarts the Docker Compose service with the new code.
+
+set -euo pipefail
+
+REPO_DIR="$(git rev-parse --show-toplevel)"
+
+echo "[post-merge] Rebuilding and restarting calendar-service..."
+cd "$REPO_DIR"
+
+docker compose build --no-cache calendar-service
+docker compose up -d --force-recreate calendar-service
+
+echo "[post-merge] Done. Service is running the latest version."
